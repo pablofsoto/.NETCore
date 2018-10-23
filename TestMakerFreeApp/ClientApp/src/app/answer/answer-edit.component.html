@@ -1,0 +1,41 @@
+<div class="answer-edit">
+  <h2>{{title}}</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-group"   [ngClass]="{ 'has-error has-feedback' : hasError('Text') }">  
+          <label for="text">Answer text:</label>
+        <br />
+        <textarea id="text" class="form-control" formControlName="Text" required placeholder="enter a suitable text...">
+        </textarea>
+        <span *ngIf="hasError('Text')" 
+                class="glyphicon glyphicon-remove form-control-feedback" 
+                aria-hidden="true"></span>
+          <div *ngIf="hasError('Text')"
+               class="help-block">
+               Text is a required field: please insert a valid Text.
+          </div>
+      </div>
+    
+    
+    
+      <div class="form-group" [ngClass]="{ 'has-error has-feedback' : hasError('Value') }">
+        <label for="value">Score Value:</label>
+        <br />
+        <select id="value" name="value" required class="form-control" formControlName="Value" >
+            <option value="">Pick a value...</option>
+          <option *ngFor="let num of [-5,-4,-3,-2,-1,0,1,2,3,4,5]"
+                  [value]="num">
+            {{num}}
+          </option>
+        </select>
+        <div *ngIf="hasError('Value')" class="help-block">
+              Please select a valid number between -5 and 5.
+        </div>
+      </div>
+
+      <div class="form-group commands">
+        <input *ngIf="editMode" class="btn btn-success" [disabled]="form.invalid" type="submit" value="Apply Changes"  />
+        <input *ngIf="!editMode" class="btn btn-success" [disabled]="form.invalid" type="submit" value="Create the Answer!"  />
+        <input type="button" value="Cancel" class="btn btn-default" (click)="onBack()" />
+      </div>
+</form>
+</div>

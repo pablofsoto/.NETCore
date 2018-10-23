@@ -1,0 +1,32 @@
+<h3>Answers</h3>
+<div *ngIf="answers.length > 0">
+    <div class="table-responsive">
+        <table class="table table-hover table-striped answers">
+            <thead>
+              <tr>
+                <th>Text</th>
+                <th>Value</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let answer of answers">
+                <td>{{answer.Text}}</td>
+                <td>{{answer.Value}}</td>
+                <td>
+                  <input type="button" value="Edit" class="btn btn-xs btn-warning"
+                         (click)="onEdit(answer)" />
+                  <input type="button" value="Delete" class="btn btn-xs btn-danger"
+                         (click)="onDelete(answer)" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>  
+</div>
+<div *ngIf="answers.length == 0" class="help-block"> 
+  This questions has no answers (yet):
+  click the <strong>Add a new Answer</strong> button to add the first
+  one!
+</div>
+<input type="button" value="Add a new Answer" (click)="onCreate()" class="btn btn-sm btn-primary" />
