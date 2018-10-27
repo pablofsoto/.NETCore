@@ -1,0 +1,25 @@
+body{
+    padding-top:50px;
+}
+body>.navbar{
+    -webkit-transition:background-color .3s ease-in;
+    transition:background-color .3s ease-in;
+}
+#mainContainer{
+    margin-top: 60px;
+}
+@media (min-width:768px){
+    body>.navbar-transparent{
+        background-color:transparent
+    }
+    body>.navbar-transparent .navbar-nav>.open>a{
+        background-color:transparent!important
+    }
+}
+
+.page-header{
+    
+        min-height: 300px;
+        border-bottom: none;
+      
+}
