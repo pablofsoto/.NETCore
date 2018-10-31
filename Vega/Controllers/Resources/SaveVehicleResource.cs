@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
-using Vega.Models;
+using Vega.Core.Models;
 
 namespace Vega.Controllers.Resources
 {

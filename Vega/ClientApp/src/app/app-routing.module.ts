@@ -4,7 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 
 const routes: Routes = [
-  {path:'vehicles/new', component:VehicleFormComponent}
+  {path:'vehicles/new', component:VehicleFormComponent},
+  {path:'vehicles/:id', component:VehicleFormComponent}
 ];
 
 @NgModule({

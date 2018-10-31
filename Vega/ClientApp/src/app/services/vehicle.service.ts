@@ -1,3 +1,4 @@
+import { SaveVehicle } from 'src/app/models/vehicle.model';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { HttpModule } from '@angular/http';
@@ -15,5 +16,24 @@ export class VehicleService {
   }
   getFeatures() {
     return this.http.get('/api/features').pipe(map(res => res.json()));
+  }
+
+  create(vehicle:SaveVehicle){
+    return this.http.post("/api/vehicles",vehicle).pipe(map(res => res.json())); 
+  }
+
+  update(vehicle:SaveVehicle){
+    return this.http.put("/api/vehicles/"+ vehicle.id, vehicle).pipe(map(res => res.json())); 
+  }
+
+  delete(id:number){
+    return this.http.delete("/api/vehicles/"+id).pipe(map(res => res.json()));
+  }
+
+  getVehicle(id){
+    return this.http.get("/api/vehicles/"+id)
+    .pipe(
+      map(res => res.json())
+    );
   }
 }
