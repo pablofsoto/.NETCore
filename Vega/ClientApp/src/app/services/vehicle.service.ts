@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators'
 })
 export class VehicleService {
 
+  private readonly vehiclesEndpoint = '/api/vehicles'; 
   constructor(private http: Http) { }
 
   getMakes() {
@@ -19,21 +20,27 @@ export class VehicleService {
   }
 
   create(vehicle:SaveVehicle){
-    return this.http.post("/api/vehicles",vehicle).pipe(map(res => res.json())); 
+    return this.http.post(this.vehiclesEndpoint,vehicle).pipe(map(res => res.json())); 
   }
 
   update(vehicle:SaveVehicle){
-    return this.http.put("/api/vehicles/"+ vehicle.id, vehicle).pipe(map(res => res.json())); 
+    return this.http.put(this.vehiclesEndpoint+"/"+ vehicle.id, vehicle).pipe(map(res => res.json())); 
   }
 
   delete(id:number){
-    return this.http.delete("/api/vehicles/"+id).pipe(map(res => res.json()));
+    return this.http.delete(this.vehiclesEndpoint+"/"+id).pipe(map(res => res.json()));
   }
 
   getVehicle(id){
-    return this.http.get("/api/vehicles/"+id)
+    return this.http.get(this.vehiclesEndpoint+"/"+id)
     .pipe(
       map(res => res.json())
+    );
+  }
+
+  getVehicles(){
+    return this.http.get(this.vehiclesEndpoint).pipe(
+      map(x => x.json())
     );
   }
 }

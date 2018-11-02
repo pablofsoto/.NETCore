@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { VehicleListComponent } from './components/vehicle-list/vehicle-list';
 
 import { HttpClientModule } from '@angular/common/http'; 
 import { HttpModule } from '@angular/http';
@@ -21,7 +22,8 @@ import { VehicleService } from './services/vehicle.service';
   declarations: [
     AppComponent,
     VehicleFormComponent,
-    NavBarComponent
+    NavBarComponent,
+    VehicleListComponent
   ],
   imports: [
     BrowserModule,
