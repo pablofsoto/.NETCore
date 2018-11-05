@@ -2,7 +2,7 @@
   <div class="col-sm-10 offset-md-1">
     <h2>Vehicle List</h2>
     <p>
-          <a [routerLink]="['/vehicles/new']" class="btn btn-primary">New Vehicle</a>
+          <a [routerLink]="['/vehicles/new']" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> New Vehicle</a>
     </p>
     <div class="card">
       <div class="card-body">
@@ -25,38 +25,41 @@
       </div>
         
     </div>
+    <div class="col-sm-12">
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                
+                <th *ngFor="let c of columns" >
+                  <div *ngIf="c.isSortable" (click)="sortBy(c.key)">
+                      {{c.title}}
+                      <i *ngIf="query.sortBy === c.key" class="fas"
+                     [class.fa-sort-up] = "query.isSortAscending"
+                     [class.fa-sort-down] = "!query.isSortAscending"></i>
+                  </div>
+                  <div *ngIf="!c.isSortable">
+                      {{c.title}}                
+                  </div>            
+                </th>
+                
+              </tr>
+            </thead>
+            <tbody>
+             <tr *ngFor="let v of queryResult.items">
+               <td>{{v.id}}</td>
+               <td>{{v.make.name}}</td>
+               <td>{{v.model.name}}</td>
+               <td>{{v.contact.name}}</td>
+               <td> 
+                  <a [routerLink]="['/vehicles/', v.id]"><i class="fas fa-pencil-alt"></i></a>  
+                
+                   
+              </td>        
+             </tr>
+            </tbody>
+          </table>
+          <pagination [total-items]="queryResult.totalItems" [page-size]="query.pageSize" (page-changed)="onPageChange($event)"></pagination> 
+    </div>
     
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          
-          <th *ngFor="let c of columns" >
-            <div *ngIf="c.isSortable" (click)="sortBy(c.key)">
-                {{c.title}}
-                <i *ngIf="query.sortBy === c.key" class="fas"
-               [class.fa-sort-up] = "query.isSortAscending"
-               [class.fa-sort-down] = "!query.isSortAscending"></i>
-            </div>
-            <div *ngIf="!c.isSortable">
-                {{c.title}}                
-            </div>            
-          </th>
-          
-        </tr>
-      </thead>
-      <tbody>
-       <tr *ngFor="let v of vehicles">
-         <td>{{v.id}}</td>
-         <td>{{v.make.name}}</td>
-         <td>{{v.model.name}}</td>
-         <td>{{v.contact.name}}</td>
-         <td> 
-            <a [routerLink]="['/vehicles/', v.id]"><i class="fas fa-pencil-alt"></i></a>  
-          
-             
-        </td>        
-       </tr>
-      </tbody>
-    </table>
   </div>
 </div>

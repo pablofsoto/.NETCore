@@ -10,6 +10,7 @@ namespace Vega.Mapping
         public MappingProfile()
         {
             // API Resource to Domain
+            CreateMap(typeof(QueryResult<>), typeof(QueryResultResource<>));
             CreateMap<VehicleQueryResource,VehicleQuery>();
             CreateMap<SaveVehicleResource,Vehicle>()
             .ForMember(v => v.Id, opt => opt.Ignore())

@@ -1,7 +1,7 @@
 import { AppErrorHandler } from './app.error-handler';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, Component } from '@angular/core';
 
 import { ToastrModule } from 'ng6-toastr-notifications';
 
@@ -16,6 +16,8 @@ import { HttpModule } from '@angular/http';
 import {FormsModule } from '@angular/forms';
 
 import { VehicleService } from './services/vehicle.service';
+import { PaginationComponent } from './components/shared/pagination/pagination.component';
+
 
 
 @NgModule({
@@ -23,7 +25,8 @@ import { VehicleService } from './services/vehicle.service';
     AppComponent,
     VehicleFormComponent,
     NavBarComponent,
-    VehicleListComponent
+    VehicleListComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

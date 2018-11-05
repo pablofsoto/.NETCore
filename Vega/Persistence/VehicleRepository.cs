@@ -39,8 +39,10 @@ namespace Vega.Persistence
             context.Vehicles.Remove(vehicle);
         }
 
-         public async Task<IEnumerable<Vehicle>> GetVehicles(VehicleQuery queryObj)
+         public async Task<QueryResult<Vehicle>> GetVehicles(VehicleQuery queryObj)
         {
+            var result = new QueryResult<Vehicle>();
+
             var query = context.Vehicles
                 .Include(v => v.Model)
                 .ThenInclude(m => m.Make)
@@ -48,12 +50,16 @@ namespace Vega.Persistence
                 .ThenInclude(vf => vf.Feature)
                 .AsQueryable();
 
+
+            // Implementing Filtering
             if (queryObj.MakeId.HasValue)
                 query = query.Where(v => v.Model.MakeId == queryObj.MakeId);
 
             if (queryObj.ModelId.HasValue)
                 query = query.Where(v => v.Model.Id == queryObj.ModelId);
 
+
+            // Implementing Sorting
             var columnsMap = new Dictionary<string, Expression<Func<Vehicle, object>>>(){
                 ["make"] = v => v.Model.Make.Name,
                 ["model"] = v => v.Model.Name,
@@ -63,9 +69,17 @@ namespace Vega.Persistence
 
            
             query = query.ApplyOrdering(queryObj,columnsMap);
+            
+            // Add Total Items
+            result.TotalItems = await query.CountAsync();
 
-     
-            return await query.ToListAsync();
+            // Implementing Paging
+
+            query = query.ApplyPaging(queryObj);
+
+            result.Items = await query.ToListAsync();
+
+            return result;
         }
 
         
