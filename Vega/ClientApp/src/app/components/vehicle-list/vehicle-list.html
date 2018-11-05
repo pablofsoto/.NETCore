@@ -29,11 +29,19 @@
     <table class="table">
       <thead class="thead-dark">
         <tr>
-          <th>ID</th>
-          <th (click)="sortBy('make')">Make</th>
-          <th (click)="sortBy('model')">Model</th>
-          <th (click)="sortBy('contactName')">Contact</th>
-          <th>Link</th>
+          
+          <th *ngFor="let c of columns" >
+            <div *ngIf="c.isSortable" (click)="sortBy(c.key)">
+                {{c.title}}
+                <i *ngIf="query.sortBy === c.key" class="fas"
+               [class.fa-sort-up] = "query.isSortAscending"
+               [class.fa-sort-down] = "!query.isSortAscending"></i>
+            </div>
+            <div *ngIf="!c.isSortable">
+                {{c.title}}                
+            </div>            
+          </th>
+          
         </tr>
       </thead>
       <tbody>
@@ -42,7 +50,10 @@
          <td>{{v.make.name}}</td>
          <td>{{v.model.name}}</td>
          <td>{{v.contact.name}}</td>
-         <td> <a [routerLink]="['/vehicles/', v.id]">Link</a>
+         <td> 
+            <a [routerLink]="['/vehicles/', v.id]"><i class="fas fa-pencil-alt"></i></a>  
+          
+             
         </td>        
        </tr>
       </tbody>
