@@ -6,28 +6,39 @@
     </p>
     <div class="card">
       <div class="card-body">
-          <div class="form-group">
-              <label for="make">Make</label>
-              <select id="make" name="make"  class="form-control" [(ngModel)]="query.makeId" (change)="onMakeChange()">
-                <option value=""></option>
-                <option *ngFor="let m of makes" value="{{ m.id }}">{{ m.name }}</option>
-              </select>
+         <div class="form-row">
+            <div class="form-group col-md-5">                
+                    <label for="make">Make</label>
+                    <select id="make" name="make"  class="form-control" [(ngModel)]="query.makeId" (change)="onMakeChange()">
+                      <option value=""></option>
+                      <option *ngFor="let m of makes" value="{{ m.id }}">{{ m.name }}</option>
+                    </select>                
             </div>
-            <div class="form-group">
-                <label for="model">Model</label>
-                <select id="model" name="model"  class="form-control" [(ngModel)]="query.modelId" (change)="onModelChange()">
-                  <option value=""></option>
-                  <option *ngFor="let m of models" value="{{ m.id }}">{{ m.name }}</option>
-                </select>
-              </div>
-            <button class="btn btn-default" (click)="resetFilter()">Reset</button>
-            <button class="btn btn-default" (click)="onFilterChange()">Filter</button>
+            <div class="form-group col-md-5">
+                
+                    <label for="model">Model</label>
+                    <select id="model" name="model"  class="form-control" [(ngModel)]="query.modelId" (change)="onModelChange()">
+                      <option value=""></option>
+                      <option *ngFor="let m of models" value="{{ m.id }}">{{ m.name }}</option>
+                    </select>
+                
+            </div>
+            <div class="form-group col-md-2">
+                <button class="btn btn btn-warning btn-lg" (click)="resetFilter()"><i class="fas fa-redo-alt"></i> Reset</button>
+                <button class="btn btn-default btn-lg" (click)="onFilterChange()"> <i class="fas fa-filter"></i> Filter</button>
+            </div>
+         </div>
+          
+          
+            
+            
       </div>
         
     </div>
+  
     <div class="col-sm-12">
         <table class="table">
-            <thead class="thead-dark">
+            <thead class="table-success">
               <tr>
                 
                 <th *ngFor="let c of columns" >

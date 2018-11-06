@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VehicleListComponent implements OnInit {
 
-  private readonly PAGE_SIZE = 3;
+  private readonly PAGE_SIZE = 5;
 
   queryResult: any ={};
   makes: any[];

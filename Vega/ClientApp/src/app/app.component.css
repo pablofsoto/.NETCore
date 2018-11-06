@@ -6,7 +6,7 @@ body>.navbar{
     transition:background-color .3s ease-in;
 }
 #mainContainer{
-    margin-top: 60px;
+    margin-top: 80px;
 }
 @media (min-width:768px){
     body>.navbar-transparent{
