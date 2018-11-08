@@ -13,7 +13,7 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./vehicle-form.component.css']
 })
 export class VehicleFormComponent implements OnInit {
-
+  title = "New Vehicle" ;
   makes:any[];
   models:any[];
   features: any[];
@@ -36,8 +36,10 @@ export class VehicleFormComponent implements OnInit {
     ) { 
          route.params.subscribe(
            p => {
-              this.vehicle.id = +p["id"]>0? +p["id"] :0;
+              this.vehicle.id = +p["id"] || 0;
+              
            });
+          
     }
 
   ngOnInit() {
@@ -54,6 +56,7 @@ export class VehicleFormComponent implements OnInit {
         this.features = data[1];
         
         if (this.vehicle.id){
+          this.title = "Edit Vehicle " + this.vehicle.id;
           this.setVehicle(data[2]);
           this.populateModels();
         }

@@ -62,14 +62,14 @@
                <td>{{v.model.name}}</td>
                <td>{{v.contact.name}}</td>
                <td> 
-                  <a [routerLink]="['/vehicles/', v.id]"><i class="fas fa-pencil-alt"></i></a>  
+                  <a [routerLink]="['/vehicles/', v.id]"><i class="fas fa-eye"></i></a>  
                 
                    
               </td>        
              </tr>
             </tbody>
           </table>
-          <pagination [total-items]="queryResult.totalItems" [page-size]="query.pageSize" (page-changed)="onPageChange($event)"></pagination> 
+          <app-pagination [total-items]="queryResult.totalItems" [page-size]="query.pageSize" (page-changed)="onPageChange($event)"></app-pagination> 
     </div>
     
   </div>

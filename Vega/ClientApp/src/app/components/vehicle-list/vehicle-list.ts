@@ -23,7 +23,7 @@ export class VehicleListComponent implements OnInit {
     {title: 'Make', key: 'make', isSortable:true},
     {title: 'Model', key: 'model', isSortable:true},
     {title: 'Contact', key: 'contactName', isSortable:true},
-    {title: 'Edition', key: 'link', isSortable:false}
+    {title: 'View', key: 'link', isSortable:false}
     
   ];
   

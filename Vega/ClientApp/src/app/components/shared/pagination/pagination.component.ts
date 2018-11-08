@@ -6,7 +6,7 @@ import {
 import { OnChanges } from '@angular/core';
 
 @Component({
-	selector: 'pagination',
+	selector: 'app-pagination',
 	templateUrl: './pagination.component.html'
 })
 export class PaginationComponent implements OnChanges {

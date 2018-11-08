@@ -1,0 +1,45 @@
+<div class="col-md-10 offset-md-1">
+    <ngb-tabset type="pills">
+        <ngb-tab>
+          <ng-template ngbTabTitle><i class="fas fa-car"></i> Vehicles</ng-template>
+          <ng-template ngbTabContent>
+            <div class="row">
+                    <div class="col-sm-4">
+                            <h3>Basics</h3>
+                             <ul>
+                                 <li>Make: {{ vehicle.make.name }}</li>
+                                 <li>Model: {{ vehicle.model.name }}</li>
+                                 <li>Registered: {{ vehicle.isRegistered ? 'Yes' : 'No' }}
+                             </ul>
+                             <h3>Contact</h3>
+                             <ul>
+                               <li>Contact Name: {{ vehicle.contact.name }}</li>
+                               <li>Contact Phone: {{ vehicle.contact.phone }}</li>
+                               <li>Contact Email: {{ vehicle.contact.email }}</li>
+                             </ul>
+                         </div>
+                         <div class="col-sm-4">
+                            <h3>Features</h3>
+                             <ul>
+                                   <li *ngFor="let f of vehicle.features">{{ f.name }}</li>
+                             </ul>
+                         </div>
+            </div>
+            <div class="row">
+                    <a class="btn btn-primary" [routerLink]="['/vehicles/edit/', vehicle.id]">Edit</a>
+                    <button class="btn btn-danger" (click)="delete()">Delete</button>
+                    <a class="btn btn-default" [routerLink]="['/vehicles']">View All Vehicles</a>
+            </div>
+                           
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab>
+          <ng-template ngbTabTitle><i class="fas fa-camera"></i> Photos</ng-template>
+          <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+            <p>Photos.</p>
+          </ng-template>
+        </ngb-tab>
+        
+      </ngb-tabset>
+</div>
+

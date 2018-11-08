@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, ErrorHandler, Component } from '@angular/core';
 
 import { ToastrModule } from 'ng6-toastr-notifications';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import {FormsModule } from '@angular/forms';
 
 import { VehicleService } from './services/vehicle.service';
 import { PaginationComponent } from './components/shared/pagination/pagination.component';
+import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle.component';
 
 
 
@@ -26,7 +28,8 @@ import { PaginationComponent } from './components/shared/pagination/pagination.c
     VehicleFormComponent,
     NavBarComponent,
     VehicleListComponent,
-    PaginationComponent
+    PaginationComponent,
+    ViewVehicleComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { PaginationComponent } from './components/shared/pagination/pagination.c
     HttpModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgbModule
   ],
   providers: [
     //{provide: ErrorHandler, useClass: AppErrorHandler},
