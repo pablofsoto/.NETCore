@@ -14,12 +14,14 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list';
 
 import { HttpClientModule } from '@angular/common/http'; 
-import { HttpModule } from '@angular/http';
+import { HttpModule, BrowserXhr } from '@angular/http';
 import {FormsModule } from '@angular/forms';
 
 import { VehicleService } from './services/vehicle.service';
 import { PaginationComponent } from './components/shared/pagination/pagination.component';
 import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle.component';
+import { BrowserXhrWithProgress, ProgressService } from './services/progress.service';
+
 
 
 
@@ -44,8 +46,10 @@ import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle.com
   ],
   providers: [
     //{provide: ErrorHandler, useClass: AppErrorHandler},
+    {provide: BrowserXhr , useClass: BrowserXhrWithProgress},
     VehicleService,
-    PhotoService    
+    PhotoService,
+    ProgressService    
   ],
   bootstrap: [AppComponent]
 })
