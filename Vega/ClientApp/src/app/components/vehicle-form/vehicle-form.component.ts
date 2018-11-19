@@ -107,6 +107,7 @@ export class VehicleFormComponent implements OnInit {
        .subscribe(x=> {
         var msg = "The Vehicle "+x.id +" was successfuly updated";
         this.showSuccess(msg);
+        this.router.navigate(['/vehicles']);
        });
      }
      else{
@@ -115,7 +116,8 @@ export class VehicleFormComponent implements OnInit {
       .subscribe(
         x => {
           var msg = "The Vehicle "+x.id +" was successfuly created";
-          this.showSuccess(msg);         
+          this.showSuccess(msg); 
+          this.router.navigate(['/vehicles']);        
         }       
       );
      }

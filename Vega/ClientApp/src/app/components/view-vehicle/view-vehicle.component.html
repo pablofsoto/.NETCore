@@ -35,8 +35,21 @@
         </ngb-tab>
         <ngb-tab>
           <ng-template ngbTabTitle><i class="fas fa-camera"></i> Photos</ng-template>
-          <ng-template ngbTabContent>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-            <p>Photos.</p>
+          <ng-template ngbTabContent>
+            <h4>Photos</h4>
+            
+
+            <div class="form-group col-sm-4">
+              <div class="input-group mb-3">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile02" (change)="uploadPhoto()" #fileInput>
+                  <label class="custom-file-label" for="inputGroupFile02">{{fileName}}</label>
+                </div>                
+              </div>
+            </div>
+            <div class="row">
+              <img *ngFor="let photo of photos" src="/uploads/{{ photo.fileName }}" class="img-thumbnail">
+            </div>
           </ng-template>
         </ngb-tab>
         

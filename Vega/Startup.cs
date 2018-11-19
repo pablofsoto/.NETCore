@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Vega.Persistence;
 using AutoMapper;
 using Vega.Core;
+using Vega.Core.Models;
 
 namespace Vega
 {
@@ -24,7 +25,9 @@ namespace Vega
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<PhotoSettings>(Configuration.GetSection("PhotoSettings"));
             services.AddScoped<IVehicleRepository,VehicleRepository>();
+            services.AddScoped<IPhotoRepository, PhotoRepository>();
             services.AddScoped<IUnitOfWork,UnitOfWork>();
             // Add Automapper
             services.AddAutoMapper();

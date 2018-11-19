@@ -32,6 +32,7 @@ namespace Vega.Mapping
 
 
             // Domain to API Resource
+            CreateMap<Photo, PhotoResource>();
             CreateMap<Make,MakeResource>();
             CreateMap<Make,KeyValuePairResource>();
             CreateMap<Model,KeyValuePairResource>();

@@ -1,3 +1,4 @@
+import { PhotoService } from './services/photo.service';
 import { AppErrorHandler } from './app.error-handler';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,7 +44,8 @@ import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle.com
   ],
   providers: [
     //{provide: ErrorHandler, useClass: AppErrorHandler},
-    VehicleService    
+    VehicleService,
+    PhotoService    
   ],
   bootstrap: [AppComponent]
 })
