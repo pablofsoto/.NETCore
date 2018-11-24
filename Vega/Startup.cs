@@ -11,6 +11,7 @@ using AutoMapper;
 using Vega.Core;
 using Vega.Core.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Vega.Controllers;
 
 namespace Vega
 {
@@ -45,6 +46,11 @@ namespace Vega
             {
                 options.Authority = "https://pabloproject.auth0.com/";
                 options.Audience = "https://api.vega.com";
+            });
+
+            // Add Authorization
+            services.AddAuthorization(option => {
+                option.AddPolicy(Policies.RequireAdminRole, policy => policy.RequireClaim("https://vega.com/roles","Admin"));
             });
             
             // Add VegaDbCOntext

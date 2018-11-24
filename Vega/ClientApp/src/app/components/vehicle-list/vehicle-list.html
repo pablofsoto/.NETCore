@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-10 offset-md-1">
     <h2>Vehicle List</h2>
-    <p>
+    <p *ngIf="auth.isAuthenticated()">
           <a [routerLink]="['/vehicles/new']" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> New Vehicle</a>
     </p>
     <div class="card">

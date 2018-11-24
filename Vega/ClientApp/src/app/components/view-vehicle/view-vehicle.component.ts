@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { ProgressService, BrowserXhrWithProgress } from './../../services/progress.service';
 import { PhotoService } from './../../services/photo.service';
 import { VehicleService } from './../../services/vehicle.service';
@@ -38,6 +39,7 @@ export class ViewVehicleComponent implements OnInit {
     private vehicleService: VehicleService,
     private photoService : PhotoService,
     private progressService : ProgressService,
+    private auth: AuthService,
     public toastr: ToastrManager) {
       route.params.subscribe(
         p => {

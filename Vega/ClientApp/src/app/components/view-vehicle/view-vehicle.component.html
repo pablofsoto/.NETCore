@@ -26,8 +26,8 @@
                          </div>
             </div>
             <div class="row">
-                    <a class="btn btn-primary" [routerLink]="['/vehicles/edit/', vehicle.id]">Edit</a>
-                    <button class="btn btn-danger" (click)="delete()">Delete</button>
+                    <a *ngIf="auth.isAuthenticated()" class="btn btn-primary" [routerLink]="['/vehicles/edit/', vehicle.id]">Edit</a>
+                    <button *ngIf="auth.isAuthenticated()" class="btn btn-danger" (click)="delete()">Delete</button>
                     <a class="btn btn-default" [routerLink]="['/vehicles']">View All Vehicles</a>
             </div>
                            
@@ -39,7 +39,7 @@
             <h4>Photos</h4>
             
 
-            <div class="form-group col-sm-4">
+            <div *ngIf="auth.isAuthenticated()" class="form-group col-sm-4">
               <div class="input-group mb-3">
                 <div class="custom-file">
                   <input type="file" class="custom-file-input" id="inputGroupFile02" (change)="uploadPhoto()" #fileInput>

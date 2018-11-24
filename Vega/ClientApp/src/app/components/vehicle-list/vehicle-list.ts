@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { KeyValuePair } from './../../models/vehicle.model';
 import { Vehicle } from '../../models/vehicle.model';
 import { VehicleService } from '../../services/vehicle.service';
@@ -28,7 +29,7 @@ export class VehicleListComponent implements OnInit {
   ];
   
   
-  constructor(private vehicleService: VehicleService) {
+  constructor(private vehicleService: VehicleService, private auth: AuthService) {
     
    }
   
