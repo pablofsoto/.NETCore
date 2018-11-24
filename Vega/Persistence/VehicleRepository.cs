@@ -52,11 +52,7 @@ namespace Vega.Persistence
 
 
             // Implementing Filtering
-            if (queryObj.MakeId.HasValue)
-                query = query.Where(v => v.Model.MakeId == queryObj.MakeId);
-
-            if (queryObj.ModelId.HasValue)
-                query = query.Where(v => v.Model.Id == queryObj.ModelId);
+            query = query.ApplyFiltering(queryObj);
 
 
             // Implementing Sorting
@@ -65,9 +61,7 @@ namespace Vega.Persistence
                 ["model"] = v => v.Model.Name,
                 ["contactName"] = v => v.ContactName,
                 
-            };
-
-           
+            };           
             query = query.ApplyOrdering(queryObj,columnsMap);
             
             // Add Total Items

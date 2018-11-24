@@ -53,7 +53,7 @@ export class AuthService {
     private setRoles(idToken) {
       var jwtHelper = new JwtHelperService();
       var decodedToken = jwtHelper.decodeToken(idToken);
-      this.roles = decodedToken['https://vega.com/roles'];
+      this.roles = decodedToken['https://vega.com/roles'] || [];
     }
      
     private setSession(authResult): void {

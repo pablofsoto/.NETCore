@@ -27,7 +27,8 @@
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/auth0-js/build/auth0.js"
+              "node_modules/auth0-js/build/auth0.js",
+              "node_modules/chart.js/src/chart.js"
             ]
           },
           "configurations": {
@@ -79,7 +80,8 @@
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/auth0-js/build/auth0.js"
+              "node_modules/auth0-js/build/auth0.js",
+              "node_modules/chart.js/src/chart.js"
             ],
             "assets": [
               "src/favicon.ico",

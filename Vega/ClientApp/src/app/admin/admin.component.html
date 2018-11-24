@@ -1,1 +1,15 @@
-<h1>Admin</h1>
+
+
+<div class="container">
+  <h1>Admin</h1>
+  <div class="col-sm-10 text-center">
+    <h3 class="text-center">#Vehicles by Make</h3>
+    <canvas baseChart
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"
+          [options]="pieChartOptions"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+      </div>
+</div>

@@ -12,22 +12,20 @@
           <a class="nav-link" [routerLink]='["/vehicles"]'> 
             <i class="fas fa-list"></i> Vehicles
           </a>
-        </li>       
-         
-                 
-          <!-- <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="auth.isInRole('Admin')">
+        </li>                      
+          <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="auth.isInRole('Admin')">
             <a class="nav-link" [routerLink]='["/admin"]'> 
-              <i class="fas fa-user"></i> Admin
+              <i class="fas fa-user-tie"></i> Admin
             </a>
-          </li>   -->
+          </li>  
       </ul>
       <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item" [routerLinkActive]='["link-active"]'>
+        <li class="nav-item">
           <a class="nav-link" (click)="auth.login()" *ngIf="!auth.isAuthenticated()"> 
             <i class="fas fa-user"></i> LogIn
           </a>
         </li>
-          <li class="nav-item" [routerLinkActive]='["link-active"]'>
+          <li class="nav-item">
             <a class="nav-link" (click)="auth.logout()" *ngIf="auth.isAuthenticated()"> 
               <i class="fas fa-sign-out-alt"></i> LogOut
             </a>

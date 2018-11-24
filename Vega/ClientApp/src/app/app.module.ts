@@ -26,6 +26,7 @@ import { PaginationComponent } from './components/shared/pagination/pagination.c
 import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle.component';
 import { BrowserXhrWithProgress, ProgressService } from './services/progress.service';
 import { AuthService } from './services/auth.service';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 
 
@@ -48,7 +49,8 @@ import { AuthService } from './services/auth.service';
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    NgbModule
+    NgbModule,
+    ChartsModule
   ],
   providers: [
     //{provide: ErrorHandler, useClass: AppErrorHandler},    

@@ -31,6 +31,8 @@ namespace Vega
             services.AddScoped<IVehicleRepository,VehicleRepository>();
             services.AddScoped<IPhotoRepository, PhotoRepository>();
             services.AddScoped<IUnitOfWork,UnitOfWork>();
+            services.AddTransient<IPhotoService2,PhotoService>();
+            services.AddTransient<IPhotoStorage,FileSystemPhotoStorage>();
             // Add Automapper
             services.AddAutoMapper();
 
