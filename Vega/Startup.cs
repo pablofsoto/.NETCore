@@ -10,6 +10,7 @@ using Vega.Persistence;
 using AutoMapper;
 using Vega.Core;
 using Vega.Core.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Vega
 {
@@ -33,6 +34,18 @@ namespace Vega
             services.AddAutoMapper();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // Authentication Service
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            }).AddJwtBearer(options =>
+            {
+                options.Authority = "https://pabloproject.auth0.com/";
+                options.Audience = "https://api.vega.com";
+            });
             
             // Add VegaDbCOntext
             services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
@@ -60,6 +73,7 @@ namespace Vega
             //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

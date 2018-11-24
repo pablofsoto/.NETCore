@@ -18,6 +18,21 @@
             <i class="fas fa-list"></i> Vehicles
           </a>
         </li>       
+        <li class="nav-item" [routerLinkActive]='["link-active"]'>
+          <a class="nav-link" (click)="auth.login()" *ngIf="!auth.isAuthenticated()"> 
+            <i class="fas fa-user"></i> Log In
+          </a>
+        </li>
+          <li class="nav-item" [routerLinkActive]='["link-active"]'>
+            <a class="nav-link" (click)="auth.logout()" *ngIf="auth.isAuthenticated()"> 
+              <i class="fas fa-user"></i> Log Out
+            </a>
+          </li>        
+          <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="auth.isInRole('Admin')">
+            <a class="nav-link" [routerLink]='["/admin"]'> 
+              <i class="fas fa-user"></i> Admin
+            </a>
+          </li>  
       </ul>    
     </div>
   </nav>

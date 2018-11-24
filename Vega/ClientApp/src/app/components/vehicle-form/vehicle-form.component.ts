@@ -17,6 +17,7 @@ export class VehicleFormComponent implements OnInit {
   makes:any[];
   models:any[];
   features: any[];
+
   vehicle:SaveVehicle = {
     id:0,
     makeId:0,
@@ -90,7 +91,7 @@ export class VehicleFormComponent implements OnInit {
   }
 
   onFeatureToggle(featureId, $event){
-    console.log(featureId);
+    
     if ($event.target.checked)
       this.vehicle.features.push(featureId);
     else{
@@ -104,7 +105,7 @@ export class VehicleFormComponent implements OnInit {
      if(this.vehicle.id){
        
        this.vehicleService.update(this.vehicle)
-       .subscribe(x=> {
+       .subscribe((x:any)=> {
         var msg = "The Vehicle "+x.id +" was successfuly updated";
         this.showSuccess(msg);
         this.router.navigate(['/vehicles']);
@@ -114,7 +115,7 @@ export class VehicleFormComponent implements OnInit {
       
       this.vehicleService.create(this.vehicle)
       .subscribe(
-        x => {
+        (x:any) => {
           var msg = "The Vehicle "+x.id +" was successfuly created";
           this.showSuccess(msg); 
           this.router.navigate(['/vehicles']);        

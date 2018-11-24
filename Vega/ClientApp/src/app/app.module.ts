@@ -1,3 +1,7 @@
+import { AuthInterceptor } from './services/auth.interceptor.service';
+import { AdminAuthGuard } from './services/admin-auth-guard.service';
+import { AuthGuard } from './services/auth-guard.service';
+import { AdminComponent } from './admin/admin.component';
 import { PhotoService } from './services/photo.service';
 import { AppErrorHandler } from './app.error-handler';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,7 +17,7 @@ import { VehicleFormComponent } from './components/vehicle-form/vehicle-form.com
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { VehicleListComponent } from './components/vehicle-list/vehicle-list';
 
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; 
 import { HttpModule, BrowserXhr } from '@angular/http';
 import {FormsModule } from '@angular/forms';
 
@@ -21,6 +25,7 @@ import { VehicleService } from './services/vehicle.service';
 import { PaginationComponent } from './components/shared/pagination/pagination.component';
 import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle.component';
 import { BrowserXhrWithProgress, ProgressService } from './services/progress.service';
+import { AuthService } from './services/auth.service';
 
 
 
@@ -32,7 +37,8 @@ import { BrowserXhrWithProgress, ProgressService } from './services/progress.ser
     NavBarComponent,
     VehicleListComponent,
     PaginationComponent,
-    ViewVehicleComponent
+    ViewVehicleComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -45,11 +51,17 @@ import { BrowserXhrWithProgress, ProgressService } from './services/progress.ser
     NgbModule
   ],
   providers: [
-    //{provide: ErrorHandler, useClass: AppErrorHandler},
-    {provide: BrowserXhr , useClass: BrowserXhrWithProgress},
+    //{provide: ErrorHandler, useClass: AppErrorHandler},    
+    AuthService,
+    AuthGuard,
+    AdminAuthGuard,
     VehicleService,
     PhotoService,
-    ProgressService    
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }        
   ],
   bootstrap: [AppComponent]
 })

@@ -14,6 +14,7 @@ export class ProgressService {
     }
 
     notify(progress){
+        if (this.uploadProgress)
         this.uploadProgress.next(progress);
         
     }

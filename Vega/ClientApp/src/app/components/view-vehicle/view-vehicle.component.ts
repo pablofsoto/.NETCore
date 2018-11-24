@@ -1,15 +1,20 @@
-import { ProgressService } from './../../services/progress.service';
+import { ProgressService, BrowserXhrWithProgress } from './../../services/progress.service';
 import { PhotoService } from './../../services/photo.service';
 import { VehicleService } from './../../services/vehicle.service';
 import { Vehicle } from './../../models/vehicle.model';
 import { Component, OnInit, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import { BrowserXhr } from '@angular/http';
 
 @Component({
   selector: 'app-view-vehicle',
   templateUrl: './view-vehicle.component.html',
-  styleUrls: ['./view-vehicle.component.css']
+  styleUrls: ['./view-vehicle.component.css'],
+  providers:[
+    {provide: BrowserXhr , useClass: BrowserXhrWithProgress},
+    ProgressService
+  ]
 })
 export class ViewVehicleComponent implements OnInit {
   @ViewChild('fileInput') fileInput: ElementRef;

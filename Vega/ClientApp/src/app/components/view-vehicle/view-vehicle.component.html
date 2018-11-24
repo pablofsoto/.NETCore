@@ -52,8 +52,14 @@
                   {{progress.percentage}}% Completed!
                 </div>
           </div>
-            <div class="row">              
-              <img *ngFor="let photo of photos" src="/uploads/{{ photo.fileName }}" class="img-thumbnail">
+            <div class="row">   
+                <div *ngFor="let photo of photos" class="card  border-light mb-3" style="max-width: 20rem;">
+                    <!-- <div class="card-header">{{ photo.fileName }}</div> -->
+                    <div class="card-body">
+                        <img  src="/uploads/{{ photo.fileName }}" class="img-thumbnail">                      
+                    </div>
+                </div>           
+              
             </div>
           </ng-template>
         </ngb-tab>
