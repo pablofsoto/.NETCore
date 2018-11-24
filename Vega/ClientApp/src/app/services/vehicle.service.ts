@@ -26,8 +26,8 @@ export class VehicleService {
   }
 
   update(vehicle:SaveVehicle){
-    return this.http.put(this.vehiclesEndpoint+"/"+ vehicle.id, vehicle).pipe(map(res => res.json())); 
-    //return this.http2.put(this.vehiclesEndpoint+"/"+ vehicle.id, vehicle);
+    //return this.http.put(this.vehiclesEndpoint+"/"+ vehicle.id, vehicle).pipe(map(res => res.json())); 
+    return this.http2.put(this.vehiclesEndpoint+"/"+ vehicle.id, vehicle);
   }
 
   delete(id:number){
