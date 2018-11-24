@@ -1,3 +1,4 @@
+import { HomeComponent } from './components/home/home.component';
 import { AuthInterceptor } from './services/auth.interceptor.service';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { AuthGuard } from './services/auth-guard.service';
@@ -33,6 +34,7 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 @NgModule({
   declarations: [
+    HomeComponent,
     AppComponent,
     VehicleFormComponent,
     NavBarComponent,

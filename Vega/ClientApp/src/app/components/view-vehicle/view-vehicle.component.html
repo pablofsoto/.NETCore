@@ -26,9 +26,9 @@
                          </div>
             </div>
             <div class="row">
-                    <a *ngIf="auth.isAuthenticated()" class="btn btn-primary" [routerLink]="['/vehicles/edit/', vehicle.id]">Edit</a>
-                    <button *ngIf="auth.isAuthenticated()" class="btn btn-danger" (click)="delete()">Delete</button>
-                    <a class="btn btn-default" [routerLink]="['/vehicles']">View All Vehicles</a>
+                    <a *ngIf="auth.isAuthenticated()" class="btn btn-primary" [routerLink]="['/vehicles/edit/', vehicle.id]"><i class="fas fa-pencil-alt"></i> Edit</a>
+                    <button *ngIf="auth.isAuthenticated()" class="btn btn-danger" (click)="delete()"><i class="fas fa-trash-alt"></i> Delete</button>
+                    <a class="btn btn-default" [routerLink]="['/vehicles']"><i class="fas fa-th-list"></i> All Vehicles</a>
             </div>
                            
           </ng-template>

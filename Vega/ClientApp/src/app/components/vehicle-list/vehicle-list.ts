@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class VehicleListComponent implements OnInit {
 
   private readonly PAGE_SIZE = 5;
-
+  public isFilterCollapsed = true;
   queryResult: any ={};
   makes: any[];
   models: KeyValuePair[];
@@ -54,9 +54,10 @@ export class VehicleListComponent implements OnInit {
  onMakeChange(){
     this.populateModels();
     delete this.query.modelId;
+    this.onFilterChange()
  }
  onModelChange(){
-
+   this.onFilterChange()
  }
 
   onFilterChange(){

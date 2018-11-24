@@ -1,9 +1,14 @@
 <div class="row">
   <div class="col-sm-10 offset-md-1">
     <h2>Vehicle List</h2>
-    <p *ngIf="auth.isAuthenticated()">
-          <a [routerLink]="['/vehicles/new']" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> New Vehicle</a>
+    <p >
+          <a *ngIf="auth.isAuthenticated()" [routerLink]="['/vehicles/new']" class="btn btn-primary"> <i class="fas fa-plus-circle"></i> New Vehicle</a>
+          <button type="button" class="btn " [class.btn-default]="isFilterCollapsed" [class.btn-success]="!isFilterCollapsed"
+           (click)="isFilterCollapsed = !isFilterCollapsed"
+          [attr.aria-expanded]="!isFilterCollapsed" aria-controls="collapseExample"> <i class="fas fa-filter"></i> Filter</button>
     </p>
+    <div id="collapseExample" [ngbCollapse]="isFilterCollapsed">
+    
     <div class="card">
       <div class="card-body">
          <div class="form-row">
@@ -23,9 +28,10 @@
                     </select>
                 
             </div>
-            <div class="form-group col-md-2">
-                <button class="btn btn btn-warning btn-lg" (click)="resetFilter()"><i class="fas fa-redo-alt"></i> Reset</button>
-                <button class="btn btn-default btn-lg" (click)="onFilterChange()"> <i class="fas fa-filter"></i> Filter</button>
+            <div class="col-md-2"  style="margin : auto;">
+                
+                <button class="btn btn btn-warning" (click)="resetFilter()"><i class="fas fa-redo-alt"></i> Reset</button>
+                <!-- <button class="btn btn-default btn-lg" (click)="onFilterChange()"> <i class="fas fa-filter"></i> Filter</button> -->
             </div>
          </div>
           
@@ -34,6 +40,7 @@
             
       </div>
         
+    </div>
     </div>
   
     <div class="col-sm-12">
